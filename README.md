@@ -5,7 +5,7 @@
 
 
 ## Prerequisite
-This app something must to be overlook considering of Nature PHP using extension like php_mongodb on windows i don't know about Mac / Linux here 
+This app something must be follow of this prerequisite considering of Nature PHP using extension like php_mongodb on windows i don't know about Mac / Linux here 
 - if you don't have the driver php_mongodb go to this link if your windows https://github.com/mongodb/mongo-php-driver/releases/
 - so if i correctly first number are version mongo_db then second one PHP Version and Third One are Does this Version PHP Thread Safety or Not
 - To Check Thread Safety or Not open your terminal / CMD / Whatever your terminal are on windows do php -i | findstr "Thread" on Linux / Mac php -i | grep "Thread" if Enabled then Use TS if not then Use NTS (Non Thread Safety)
