@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Error;
 use Illuminate\Http\Request;
 use MongoDB\Client;
+use Illuminate\Support\Facades\Config;
 
 class DB extends Controller
 {
@@ -12,13 +13,12 @@ class DB extends Controller
     private $Client;
     private $Collection;
 
-    public function SetConstruct($t_DB, $t_Collection, $t_Client)
+    public function __construct($t_DB = Null, $t_Collection, $t_Client = Null)
     { 
         $this->Client = new Client($t_Client);
         $this->DB = $this->Client->selectDatabase($t_DB);
         $this->Collection = $this->DB->selectCollection($t_Collection);
         ($this->Collection && $this->DB) ? : throw new Error("Database or Collection does not match or exists please insert properly database or collection", 500);
-        return $this->Collection;
         // if ((bool)$Collection == True && (bool)$DB == True) {
         //     return $Collection;
         // } 
@@ -26,5 +26,9 @@ class DB extends Controller
         // {
         //     throw new Error("Database or Collection does not match or exists please insert properly database or collection", 500);
         // }
+    }
+    public function CallDatabase()
+    {
+        return $this->Collection;
     }
 }
