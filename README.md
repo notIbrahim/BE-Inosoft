@@ -3,6 +3,16 @@
 
 ## Backend Inosoft Testing
 
+
+## Prerequisite
+This app something must to be overlook considering of Nature PHP using extension like php_mongodb on windows i don't know about Mac / Linux here 
+- if you don't have the driver php_mongodb go to this link if your windows https://github.com/mongodb/mongo-php-driver/releases/
+- so if i correctly first number are version mongo_db then second one PHP Version and Third One are Does this Version PHP Thread Safety or Not
+- To Check Thread Safety or Not open your terminal / CMD / Whatever your terminal are on windows do php -i | findstr "Thread" on Linux / Mac php -i | grep "Thread" if Enabled then Use TS if not then Use NTS (Non Thread Safety)
+- After finish download you find location ext usually inside php and put the file inside ext
+- Last Step are config your php.ini / edit php.ini added this extension=php_mongodb 
+- And Done
+
 ## Guide to Use App
 In Order to use this App there something to make sure that depedency like composer are installed if not well go install composer (newest one)
 So Guide to use app
