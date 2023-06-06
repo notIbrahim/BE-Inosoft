@@ -6,35 +6,48 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Vehicle;
 use MongoDB\Client;
 use App\Http\Controllers\DB;
+use Exception;
 use Illuminate\Support\Facades\DB as MongoDB;
+/** 
+ * @param string $Engine 
+ * @param string $SuspensionTypes Tipe Suspensi dalam Motor tersebut 
+ * @param string $TranmissionTypes Tipe Transmisi  
+ */
 
 class Motorcycles extends Vehicle
 {
     public $Engine;
     public $SuspensionTypes;
     public $TranmissionTypes;
+    private $Collection;
+    private $Database;
 
-    // public function __construct(Request $request)
-    // {
-    //     parent::__construct();
-    // }
+    public function __construct() {
+        $this->Database = new DB("BE-Inosoft", "Sample-Inosoft", "mongodb://localhost:27017");
+        $this->Collection = $this->Database->CallDatabase();
+    }
 
-    public function Stock(Request $requested) 
+    public function Stock() 
     {
-        $FetchInfo = new DB("BE-Inosoft", "Sample-Inosoft", "mongodb://localhost:27017");
-        $Collection = $FetchInfo->CallDatabase();
-        if ((bool)$Collection) {
-            continue;
-            // return response()->json("Connection Succesfull", 200);
-        }        
+        $ReceivedCollection = $this->Collection;
+        return $ReceivedCollection ? $ReceivedCollection->find() : Throw new Exception("Collection cannot be fetch",400);       
+    }
+
+    public function AddStock(array $Collections)
+    {
+
+    }
+    // I don't think best way to put this using delete but well anyway
+    public function ReduceStock($Context, )
+    {
+
     }
 
     // Ini merupakan Penjualan dari Kendaran Motor
-    public function Sales (Request $requested)
+    public function Sales(Request $requested)
     {
-        $FetchInfo = new DB("BE-Inosoft", "Sample-Inosoft", "mongodb://localhost:27017");
-        $Collection = $FetchInfo->CallDatabase();
-        $Post = $Collection->insertOne([
+        $ReceivedCollection = $this->Collection;
+        $Post = $ReceivedCollection->insertOne([
             "Sales" => [
                 'Engine Manufacture' => '',
                 'Year Manufacture' => '',
@@ -44,12 +57,12 @@ class Motorcycles extends Vehicle
                 'Price' => '',                
             ]
         ]);
-        return $Post->getInsertedCount() > 0 ? response()->json("Inserted Success", 201) : 
-        response()->json("Failed to Insert ", 400);
+        // return $Post->getInsertedCount() > 0 ? response()->json("Inserted Success", 201) : 
+        // response()->json("Failed to Insert ", 400);
     }
 
     public function EachSales(Request $requested) 
     {
-
+        
     }
 }

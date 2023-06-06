@@ -27,6 +27,7 @@ class DB extends Controller
         //     throw new Error("Database or Collection does not match or exists please insert properly database or collection", 500);
         // }
     }
+ 
     public function CallDatabase()
     {
         return $this->Collection;
