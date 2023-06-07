@@ -25,7 +25,7 @@ Route::prefix('/Motorcycle')->group(function (){
 })->middleware(ValidatorJWT::class);
 
 Route::prefix('/Cars')->group(function (){
-    Route::get('/{Specified}', [Vehicle::class , 'Cars']);
+    Route::any('/{Specified}', [Vehicle::class , 'Cars']);
 })->middleware(ValidatorJWT::class);
 
 Route::get('/Tested', [Motorcycles::class , 'Stock']);

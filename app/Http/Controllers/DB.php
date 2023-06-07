@@ -18,7 +18,7 @@ class DB extends Controller
         $this->Client = new Client($t_Client);
         $this->DB = $this->Client->selectDatabase($t_DB);
         $this->Collection = $this->DB->selectCollection($t_Collection);
-        ($this->Collection && $this->DB) ? : throw new Error("Database or Collection does not match or exists please insert properly database or collection", 500);
+        ($this->Collection && $this->DB) ? $this->Collection: throw new Error("Database or Collection does not match or exists please insert properly database or collection", 500);
         // if ((bool)$Collection == True && (bool)$DB == True) {
         //     return $Collection;
         // } 
