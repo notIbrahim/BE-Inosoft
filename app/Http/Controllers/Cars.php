@@ -1,7 +1,6 @@
 <?php
-
-namespace App\Http\Controllers;
 declare(strict_types=1);
+namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Vehicle;
 use MongoDB\Client;
@@ -27,9 +26,19 @@ class Cars extends Controller
         return $ReceivedCollection ? $ReceivedCollection->find() : Throw new Exception("Collection cannot be fetch",400);       
     }
 
-    public function AddStock(array $Collections)
+    public function AddStock($ReceivedRequest)
     {
-        MSG_EOF;
+        $ReceivedCollection = $this->Collection;
+        $Post = $ReceivedCollection->insertOne([
+            "Sales" => [
+                'Engine Manufacture' => '',
+                'Year Manufacture' => '',
+                'SuspensionTypes' => '',
+                'TransmissionTypes' => '',
+                'Colors' =>'',
+                'Price' => '',                
+            ]
+        ]);
     }
     // I don't think best way to put this using delete but well anyway
     public function ReduceStock($Context, )

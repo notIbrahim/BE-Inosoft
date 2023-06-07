@@ -33,9 +33,24 @@ class Motorcycles extends Vehicle
         return $ReceivedCollection ? $ReceivedCollection->find() : Throw new Exception("Collection cannot be fetch",400);       
     }
 
-    public function AddStock(array $Collections)
+    public function AddStock($ReceivedRequest)
     {
+        $ReceivedCollection = $this->Collection;
+        $ParamData = $ReceivedRequest->all();
+        $Data = [
+            "A" => $ParamData['Engine']
+        ];
+        return $Data;
 
+        // $ReceivedCollection->insertOne([
+        //     'Engine Manufacture' => $Data['A'],
+        //         'Year Manufacture' => '',
+        //         'SuspensionTypes' => '',
+        //         'TransmissionTypes' => '',
+        //         'Colors' =>'',
+        //         'Price' => '',
+        // ]
+        // );
     }
     // I don't think best way to put this using delete but well anyway
     public function ReduceStock($Context, )

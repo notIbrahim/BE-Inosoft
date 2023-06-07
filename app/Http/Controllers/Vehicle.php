@@ -24,7 +24,6 @@ class Vehicle extends Controller
         switch (strtoupper($MethodReceived)) {
             case "GET" :
             {
-
                 // Optimal Solution are Loop but hindering by $this->MotorcycleService
                 if ($ParamCheck == "Stock") {
                     $StockMotorcycles = $this->MotorcycleService->Stock();
@@ -44,7 +43,7 @@ class Vehicle extends Controller
             case "POST":
             {
                 if ($ParamCheck == "AddStock") {
-                    $StockMotorcycles = $this->MotorcycleService->Stock();
+                    $StockMotorcycles = $this->MotorcycleService->AddStock($request);
                     return response()->json($StockMotorcycles, 302);
                 }
             }
@@ -68,6 +67,44 @@ class Vehicle extends Controller
     public function Cars(Request $request) 
     {
         $MethodReceived = $request->method();
+        $ParamCheck = $request->route('Specified');
+        switch (strtoupper($MethodReceived)) {
+            case "GET" :
+            {
+                // Optimal Solution are Loop but hindering by $this->MotorcycleService
+                if ($ParamCheck == "Stock") {
+                    $StockMotorcycles = $this->MotorcycleService->Stock();
+                    return response()->json($StockMotorcycles, 302);
+                }
+
+                if ($ParamCheck == "Sales") {
+                    $SalesMotorcycles = $this->MotorcycleService->Sales($request);
+                    return response()->json($SalesMotorcycles, 302);
+                }
+
+                if ($ParamCheck == "EachSales") {
+                    $EachSalesMotorcycles = $this->MotorcycleService->EachSales($request);
+                    return response()->json($EachSalesMotorcycles, 302);
+                }
+            }
+            case "POST":
+            {
+                if ($ParamCheck == "AddStock") {
+                    $StockMotorcycles = $this->MotorcycleService->AddStock($request);
+                    return response()->json($StockMotorcycles, 302);
+                }
+            }
+
+            case "PUT":
+            {
+
+            }
+
+            case "DELETE":
+            {
+
+            }
+        }
         return response()->json([
             "Param" => $request->route('Specified'), 
             "Query" => $request->query('Query'), 
