@@ -22,4 +22,4 @@ So Guide to use app
     - if Windows well use terminal / CMD / Powershell / Whatever your terminal then do navigate where your save folder and extract them by use dir <this-project>
     - if Linux / Mac well use terminal / Whatever your terminal then do navigate where your save folder and extract them by use ls <this-project>
 - after you locate them then run composer install to some depedencies you needed for
-- after done run.sh to run app (if don't wanna make complicated thing) if not then run php artisan serve (optional) --port="whatever your desire" --host="its IP" 
+- after done run.sh (especially need run on bash) to run app (if don't wanna make complicated thing) if not then run php artisan serve (optional) --port="whatever your desire" --host="its IP" 
