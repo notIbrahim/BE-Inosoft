@@ -10,7 +10,8 @@ This app something must be follow of this prerequisite considering of Nature PHP
 - so if i correctly first number are version mongo_db then second one PHP Version and Third One are Does this Version PHP Thread Safety or Not
 - To Check Thread Safety or Not open your terminal / CMD / Whatever your terminal are on windows do php -i | findstr "Thread" on Linux / Mac php -i | grep "Thread" if Enabled then Use TS if not then Use NTS (Non Thread Safety)
 - After finish download you find location ext usually inside php and put the file inside ext
-- Last Step are config your php.ini / edit php.ini added this extension=php_mongodb 
+- so JWT https://github.com/lcobucci/jwt here that i use need some editing php.ini and remove this ";" symbol => ;extension=sodium because composer check php version and required ext for so when updating 4.0 -> 4.3 gave some error here due to sodium wasnt activate so file of php_sodium here already have into ext folder so editing php.ini required 
+- Last Step are config your php.ini / edit php.ini added this extension=php_mongodb
 - And Done
 
 ## Guide to Use App
